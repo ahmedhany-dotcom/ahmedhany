@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  ============================================================
+  AHMED HANY — PERSONAL PORTFOLIO   (fully static, no JS deps)
+  ============================================================
+  HOW TO EDIT
+  -----------
+  Every piece of content is HARDCODED in this file. There is
+  NO JavaScript that injects names, phone, email, or links.
+  To edit anything: search for the section name (e.g. HERO,
+  CONTACT) and edit the visible text or href directly.
+
+  If you change your phone number, email, etc., update them in
+  3 places: (1) here in this HTML, (2) Ahmed_Hany.vcf next to
+  this file, and (3) re-generate assets/qr.png (instructions
+  in the README).
+  ============================================================
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ahmed Hany — Police Officer</title>
+<meta name="description" content="Ahmed Hany — Police Officer at Minia Security Directorate, Roads and Tourist Convoys Administration." />
+<meta name="theme-color" content="#1a2332" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Ahmed Hany — Police Officer" />
+<meta property="og:description" content="A life in service. Securing transportation routes and protecting tourist delegations across Egypt." />
+<meta property="og:image" content="./assets/profile.jpg" />
+<meta property="og:type" content="profile" />
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231a2332'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='17' font-weight='600' fill='%23fff'%3EAH%3C/text%3E%3C/svg%3E" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN (standard) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:           '#0a0a0a',
+          'ink-muted':   '#6b6b6b',
+          line:          '#e7e5df',
+          bg:            '#ffffff',
+          'bg-soft':     '#f7f6f3',
+          accent:        '#1a2332',
+          'accent-warm': '#b8956a',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:    ['Inter', 'system-ui', 'sans-serif'],
+        },
+        letterSpacing: { 'wider-2': '0.18em' },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #0a0a0a;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ===========================================================
+     ENTRANCE ANIMATIONS — pure CSS, no JS, no AOS library.
+     Each element starts hidden (animation from-state) and is
+     guaranteed visible by the to-state with animation-fill-mode.
+     If animations fail entirely, browser defaults to opacity:1.
+     =========================================================== */
+  @keyframes revealUp    { from { opacity: 0; transform: translateY(28px); }  to { opacity: 1; transform: none; } }
+  @keyframes revealDown  { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+  @keyframes revealLeft  { from { opacity: 0; transform: translateX(28px); }  to { opacity: 1; transform: none; } }
+  @keyframes revealRight { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+
+  [data-aos] {
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(.2, .7, .2, 1);
+    animation-fill-mode: both;
+  }
+  [data-aos="fade-up"]    { animation-name: revealUp; }
+  [data-aos="fade-down"]  { animation-name: revealDown; }
+  [data-aos="fade-left"]  { animation-name: revealLeft; }
+  [data-aos="fade-right"] { animation-name: revealRight; }
+
+  [data-aos-delay="100"] { animation-delay: 100ms; }
+  [data-aos-delay="150"] { animation-delay: 150ms; }
+  [data-aos-delay="200"] { animation-delay: 200ms; }
+  [data-aos-delay="300"] { animation-delay: 300ms; }
+  [data-aos-delay="400"] { animation-delay: 400ms; }
+  [data-aos-delay="500"] { animation-delay: 500ms; }
+  [data-aos-delay="700"] { animation-delay: 700ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-aos] { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
+  /* ----- Hero name typography ----- */
+  .hero-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(3.25rem, 9vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  /* ----- Section heading typography ----- */
+  .section-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  /* ----- Eyebrow label ----- */
+  .eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    color: #6b6b6b;
+  }
+
+  /* ----- Nav: transparent, frost on scroll (decorative JS) ----- */
+  nav.nav { transition: background 0.4s ease, border-color 0.4s ease; background: transparent; border-bottom: 1px solid transparent; }
+  nav.nav.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid #e7e5df;
+  }
+
+  /* ----- Buttons ----- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 500; font-size: 0.95rem;
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn-primary { background: #1a2332; color: #ffffff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(26, 35, 50, 0.45); }
+  .btn-ghost { border-color: #0a0a0a; color: #0a0a0a; background: transparent; }
+  .btn-ghost:hover { transform: translateY(-2px); background: #0a0a0a; color: #ffffff; }
+
+  /* ----- Profile photo frame ----- */
+  .profile-frame {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 40px 80px -40px rgba(10, 10, 10, 0.35);
+    background: #f7f6f3;
+  }
+  .profile-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(10, 10, 10, 0.18));
+    pointer-events: none;
+  }
+  .profile-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ----- Skill card ----- */
+  .skill-card {
+    border: 1px solid #e7e5df;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .skill-card:hover {
+    transform: translateY(-4px);
+    border-color: #1a2332;
+    box-shadow: 0 30px 50px -25px rgba(10, 10, 10, 0.18);
+  }
+
+  /* ----- Timeline ----- */
+  .timeline-line { background: linear-gradient(180deg, #1a2332 0%, #e7e5df 100%); }
+  .timeline-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #ffffff; border: 2px solid #1a2332;
+    box-shadow: 0 0 0 6px #f7f6f3;
+  }
+
+  /* ----- Contact card ----- */
+  .contact-card {
+    border: 1px solid #e7e5df; border-radius: 20px;
+    padding: 1.75rem; background: #ffffff;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .contact-card:hover {
+    transform: translateY(-3px);
+    border-color: #1a2332;
+    box-shadow: 0 20px 40px -20px rgba(10, 10, 10, 0.15);
+  }
+
+  /* ----- Social icons ----- */
+  .social-icon {
+    width: 52px; height: 52px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid #e7e5df; border-radius: 16px;
+    color: #1a2332;
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1), background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    background: #ffffff;
+  }
+  .social-icon:hover {
+    transform: translateY(-3px) scale(1.06) rotate(-3deg);
+    background: #1a2332; color: #ffffff; border-color: #1a2332;
+    box-shadow: 0 16px 30px -12px rgba(26, 35, 50, 0.45);
+  }
+
+  /* ----- Scroll indicator ----- */
+  .scroll-indicator {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    flex-direction: column; align-items: center; gap: 8px;
+    color: #6b6b6b; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .scroll-indicator .line {
+    width: 1px; height: 40px;
+    background: linear-gradient(180deg, #6b6b6b, transparent);
+    animation: scrollPulse 2.4s ease-in-out infinite;
+    transform-origin: top;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%      { opacity: 1;   transform: scaleY(1.4); }
+  }
+
+  /* ----- QR card ----- */
+  .qr-card {
+    background: #ffffff; border: 1px solid #e7e5df;
+    border-radius: 24px; padding: 1.75rem;
+    box-shadow: 0 30px 60px -30px rgba(10, 10, 10, 0.18);
+    display: inline-block;
+  }
+  .qr-card img {
+    display: block;
+    width: 220px; height: 220px;
+    border-radius: 8px;
+  }
+
+  /* ===========================================================
+     MOBILE MENU — Pure CSS via :target, no JS required.
+     Hamburger link sets URL hash to #menu → :target reveals overlay.
+     Clicking any link inside changes hash → overlay hides.
+     =========================================================== */
+  .mobile-menu {
+    position: fixed; inset: 0;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 60;
+    display: none;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1.75rem;
+  }
+  .mobile-menu:target { display: flex; }
+  .mobile-menu a.menu-link {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2rem; color: #0a0a0a;
+    text-decoration: none;
+  }
+  .mobile-menu .menu-close {
+    position: absolute; top: 20px; right: 24px;
+    width: 44px; height: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #0a0a0a;
+    font-size: 1.5rem; text-decoration: none;
+    border-radius: 50%;
+  }
+</style>
+</head>
+
+<body class="bg-bg text-ink">
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="nav" class="nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+      <a href="#top" class="font-display text-2xl tracking-tight font-semibold">
+        AH<span class="text-accent-warm">.</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-10 text-sm">
+        <li><a href="#about"     class="hover:text-accent transition-colors">About</a></li>
+        <li><a href="#skills"    class="hover:text-accent transition-colors">Skills</a></li>
+        <li><a href="#education" class="hover:text-accent transition-colors">Education</a></li>
+        <li><a href="#contact"   class="hover:text-accent transition-colors">Contact</a></li>
+      </ul>
+      <!-- Hamburger: sets URL hash to #menu, which the CSS :target rule shows -->
+      <a href="#menu" class="md:hidden p-2 inline-flex" aria-label="Open menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay (pure CSS :target) -->
+  <div id="menu" class="mobile-menu" role="dialog" aria-label="Site navigation">
+    <a href="#top" class="menu-close" aria-label="Close menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
+      </svg>
+    </a>
+    <a href="#about"     class="menu-link">About</a>
+    <a href="#skills"    class="menu-link">Skills</a>
+    <a href="#education" class="menu-link">Education</a>
+    <a href="#contact"   class="menu-link">Contact</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="top" class="relative min-h-screen flex items-center pt-32 pb-24 px-6 lg:px-12">
+    <div class="max-w-[1200px] mx-auto w-full grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <!-- Text column -->
+      <div class="lg:col-span-7 order-2 lg:order-1">
+        <div class="eyebrow mb-6" data-aos="fade-right" data-aos-delay="100">
+          Police Officer · Egypt
+        </div>
+
+        <h1 class="hero-name mb-6" data-aos="fade-right" data-aos-delay="200">
+          Ahmed<br/>Hany<span class="text-accent-warm">.</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-ink-muted max-w-xl leading-relaxed mb-10" data-aos="fade-up" data-aos-delay="500">
+          A life in service — securing transportation routes and protecting tourist delegations across the Minia governorate.
+        </p>
+
+        <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="700">
+          <a href="./Ahmed_Hany.vcf" download="Ahmed_Hany.vcf" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Save My Contact
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo column -->
+      <div class="lg:col-span-5 order-1 lg:order-2" data-aos="fade-left" data-aos-delay="300">
+        <div class="profile-frame">
+          <img src="./assets/profile.jpg" alt="Ahmed Hany" loading="eager" />
+        </div>
+        <div class="mt-6 flex items-center gap-3 text-xs text-ink-muted tracking-wider-2 uppercase">
+          <span class="block w-8 h-px bg-line"></span>
+          Minia Security Directorate
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator hidden md:flex" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about" class="py-24 lg:py-36 px-6 lg:px-12 bg-bg-soft">
+    <div class="max-w-[1100px] mx-auto grid lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class="lg:col-span-5">
+        <div class="eyebrow mb-6" data-aos="fade-up">About</div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+          A life in<br/>service<span class="text-accent-warm">.</span>
+        </h2>
+      </div>
+
+      <div class="lg:col-span-7">
+        <p class="text-lg lg:text-xl leading-relaxed text-ink-muted mb-10" data-aos="fade-up" data-aos-delay="200">
+          A dedicated Police Officer currently serving at the Minia Security Directorate within the Roads and Tourist Convoys Administration. Committed to ensuring public safety, securing transportation routes, and providing top-tier protection for tourist delegations.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-6 pt-8 border-t border-line" data-aos="fade-up" data-aos-delay="300">
+          <div>
+            <div class="eyebrow mb-2">Location</div>
+            <div class="text-base font-medium">Egypt</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-2">Department</div>
+            <div class="text-base font-medium">Minia Directorate</div>
+          </div>
+          <div>
+            <div class="eyebrow mb-2">Specialty</div>
+            <div class="text-base font-medium">Roads &amp; Tourist Convoys</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+  ============================================================ -->
+  <section id="skills" class="py-24 lg:py-36 px-6 lg:px-12">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div>
+          <div class="eyebrow mb-6" data-aos="fade-up">Capabilities</div>
+          <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+            What I bring<br/>to the field<span class="text-accent-warm">.</span>
+          </h2>
+        </div>
+        <div class="text-sm text-ink-muted max-w-xs" data-aos="fade-up" data-aos-delay="200">
+          Five core competencies refined through years of operational duty.
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5">
+        <div class="skill-card" data-aos="fade-up">
+          <div class="text-accent-warm font-medium text-sm mb-4">01</div>
+          <h3 class="font-display text-2xl leading-tight">Crisis Management</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-accent-warm font-medium text-sm mb-4">02</div>
+          <h3 class="font-display text-2xl leading-tight">Security Planning</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-accent-warm font-medium text-sm mb-4">03</div>
+          <h3 class="font-display text-2xl leading-tight">VIP &amp; Facility Protection</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-accent-warm font-medium text-sm mb-4">04</div>
+          <h3 class="font-display text-2xl leading-tight">Leadership &amp; Decision Making</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="text-accent-warm font-medium text-sm mb-4">05</div>
+          <h3 class="font-display text-2xl leading-tight">Effective Communication</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EDUCATION
+  ============================================================ -->
+  <section id="education" class="py-24 lg:py-36 px-6 lg:px-12 bg-bg-soft">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="mb-16">
+        <div class="eyebrow mb-6" data-aos="fade-up">Education</div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+          Built on a rigorous<br/>academic foundation<span class="text-accent-warm">.</span>
+        </h2>
+      </div>
+
+      <div class="relative pl-10 lg:pl-16">
+        <div class="timeline-line absolute left-2 top-2 bottom-2 w-px"></div>
+
+        <div class="relative pb-16" data-aos="fade-right">
+          <div class="timeline-dot absolute -left-[34px] top-2"></div>
+          <div class="eyebrow mb-2">Postgraduate</div>
+          <h3 class="font-display text-3xl mb-2">Master's Degree</h3>
+          <p class="text-ink-muted">University of Sadat City</p>
+        </div>
+
+        <div class="relative pb-16" data-aos="fade-right" data-aos-delay="150">
+          <div class="timeline-dot absolute -left-[34px] top-2"></div>
+          <div class="eyebrow mb-2">Bachelor's</div>
+          <h3 class="font-display text-3xl mb-2">Bachelor of Law</h3>
+          <p class="text-ink-muted">Cairo University</p>
+        </div>
+
+        <div class="relative" data-aos="fade-right" data-aos-delay="300">
+          <div class="timeline-dot absolute -left-[34px] top-2"></div>
+          <div class="eyebrow mb-2">Bachelor's</div>
+          <h3 class="font-display text-3xl mb-2">Bachelor of Police Sciences</h3>
+          <p class="text-ink-muted">Police Academy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT  (all hardcoded — phone, email, social URLs)
+  ============================================================ -->
+  <section id="contact" class="py-24 lg:py-36 px-6 lg:px-12">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="eyebrow mb-6" data-aos="fade-up">Contact</div>
+        <h2 class="section-title mb-6" data-aos="fade-up" data-aos-delay="100">
+          Let's connect<span class="text-accent-warm">.</span>
+        </h2>
+        <p class="text-ink-muted text-lg" data-aos="fade-up" data-aos-delay="200">
+          Available for official correspondence, professional collaboration, and inquiries.
+        </p>
+      </div>
+
+      <!-- Contact cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <a href="tel:+201555672546" class="contact-card" data-aos="fade-up">
+          <div class="text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="eyebrow">Phone</div>
+          <div class="font-medium text-ink">+20 155 567 2546</div>
+        </a>
+
+        <a href="https://wa.me/201555672546" target="_blank" rel="noopener" class="contact-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="eyebrow">WhatsApp</div>
+          <div class="font-medium text-ink">Chat with me</div>
+        </a>
+
+        <a href="mailto:ahmedhanycod@gmail.com" class="contact-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 6l-10 7L2 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="eyebrow">Email</div>
+          <div class="font-medium text-ink break-all">ahmedhanycod@gmail.com</div>
+        </a>
+
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-accent" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="eyebrow">Location</div>
+          <div class="font-medium text-ink">Egypt</div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="flex flex-wrap gap-4 justify-center mb-16" data-aos="fade-up">
+        <a href="./Ahmed_Hany.vcf" download="Ahmed_Hany.vcf" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Save My Contact
+        </a>
+        <a href="https://wa.me/201555672546" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Open WhatsApp
+        </a>
+      </div>
+
+      <!-- Stylized social icons (Facebook + Instagram only) -->
+      <div class="flex justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://www.facebook.com/AhmEdHanny.mano/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke-linejoin="round"/>
+            <path d="M14 8h-1.5A1.5 1.5 0 0011 9.5V12H9v2.5h2V20h2.5v-5.5H15L15.5 12h-2V10a.5.5 0 01.5-.5h1.5V8z" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/ahmedanooon/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3.5"/>
+            <circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       QR CODE  (static PNG, no JS generation)
+  ============================================================ -->
+  <section class="py-24 lg:py-32 px-6 lg:px-12 bg-bg-soft">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7">
+          <div class="eyebrow mb-6" data-aos="fade-up">Quick Save</div>
+          <h2 class="section-title mb-6" data-aos="fade-up" data-aos-delay="100">
+            Scan once.<br/>Saved forever<span class="text-accent-warm">.</span>
+          </h2>
+          <p class="text-ink-muted text-lg max-w-md mb-8" data-aos="fade-up" data-aos-delay="200">
+            Point your phone camera at the code — it adds my full contact card to your address book in one tap.
+          </p>
+          <a href="./Ahmed_Hany.vcf" download="Ahmed_Hany.vcf" class="btn btn-ghost" data-aos="fade-up" data-aos-delay="300">
+            Or download .vcf
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center" data-aos="fade-left" data-aos-delay="200">
+          <div class="qr-card">
+            <img src="./assets/qr.png" alt="Scan to add Ahmed Hany to your contacts" width="220" height="220" />
+            <div class="mt-4 text-center text-xs eyebrow">Ahmed Hany · vCard</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="py-12 px-6 lg:px-12 border-t border-line">
+    <div class="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-ink-muted">
+      <div class="font-display text-xl text-ink">AH<span class="text-accent-warm">.</span></div>
+      <div>© 2026 Ahmed Hany. All rights reserved.</div>
+      <div class="text-xs tracking-wider-2 uppercase">Built with care</div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       OPTIONAL DECORATION ONLY — nav frost-on-scroll.
+       Does NOT inject any content. If this script fails or is
+       blocked, every piece of content above still renders perfectly.
+  ============================================================ -->
+  <script>
+    (function () {
+      var navEl = document.getElementById('nav');
+      if (!navEl) return;
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 60) navEl.classList.add('scrolled');
+        else navEl.classList.remove('scrolled');
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
